@@ -62,7 +62,8 @@ image: "docker.elastic.co/elasticsearch/elasticsearch"
 imageTag: "7.13.3"
 imagePullPolicy: "IfNotPresent"
 
-podAnnotations: {}
+podAnnotations:
+  {}
   # iam.amazonaws.com/role: es-cluster
 
 # additionals labels
@@ -78,7 +79,8 @@ resources:
     cpu: "1000m"
     memory: "2Gi"
 
-initResources: {}
+initResources:
+  {}
   # limits:
   #   cpu: "25m"
   #   # memory: "128Mi"
@@ -89,7 +91,7 @@ initResources: {}
 networkHost: "0.0.0.0"
 
 volumeClaimTemplate:
-  accessModes: [ "ReadWriteOnce" ]
+  accessModes: ["ReadWriteOnce"]
   resources:
     requests:
       storage: 30Gi
@@ -125,21 +127,25 @@ persistence:
     enabled: false
   annotations: {}
 
-extraVolumes: []
+extraVolumes:
+  []
   # - name: extras
   #   emptyDir: {}
 
-extraVolumeMounts: []
+extraVolumeMounts:
+  []
   # - name: extras
   #   mountPath: /usr/share/extras
   #   readOnly: true
 
-extraContainers: []
+extraContainers:
+  []
   # - name: do-something
   #   image: busybox
   #   command: ['do', 'something']
 
-extraInitContainers: []
+extraInitContainers:
+  []
   # - name: do-something
   #   image: busybox
   #   command: ['do', 'something']
@@ -163,11 +169,6 @@ nodeAffinity: {}
 # The default is to deploy all pods serially. By setting this to parallel all pods are started at
 # the same time when bootstrapping the cluster
 podManagementPolicy: "Parallel"
-
-# The environment variables injected by service links are not used, but can lead to slow Elasticsearch boot times when
-# there are many services in the current namespace.
-# If you experience slow pod startups you probably want to set this to `false`.
-enableServiceLinks: true
 
 protocol: http
 httpPort: 9200
@@ -199,7 +200,7 @@ podSecurityContext:
 securityContext:
   capabilities:
     drop:
-    - ALL
+      - ALL
   # readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
@@ -232,7 +233,8 @@ tolerations: []
 # Only enable this if you have security enabled on your cluster
 ingress:
   enabled: false
-  annotations: {}
+  annotations:
+    {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -248,7 +250,8 @@ nameOverride: ""
 fullnameOverride: ""
 healthNameOverride: ""
 
-lifecycle: {}
+lifecycle:
+  {}
   # preStop:
   #   exec:
   #     command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message"]

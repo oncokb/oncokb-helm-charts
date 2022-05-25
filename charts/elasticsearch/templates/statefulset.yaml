@@ -152,9 +152,6 @@ spec:
       imagePullSecrets:
 {{ toYaml .Values.imagePullSecrets | indent 8 }}
       {{- end }}
-      {{- if .Values.enableServiceLinks }}
-      enableServiceLinks: {{ .Values.enableServiceLinks }}
-      {{- end }}
       {{- if .Values.hostAliases }}
       hostAliases: {{ toYaml .Values.hostAliases | nindent 8 }}
       {{- end }}
